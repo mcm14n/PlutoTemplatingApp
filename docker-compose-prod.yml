@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile-prod
+    ports:
+      - "3000:80"
+    volumes:
+      - ./web:/pluto
+      - /web/node_modules
+    networks:
+      - frontend
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - appdata:/var/www/
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+volumes:
+  appdata:
+    driver: local
