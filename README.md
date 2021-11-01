@@ -4,7 +4,7 @@
 
 ### The formatter is accepts a template syntax as designed by Pluto VR
 
-#### BUILD INSTRUCTION
+#### BUILD INSTRUCTIONS
 
 1. Install docker and docker-compose
 
@@ -14,9 +14,13 @@
 2. Pull this repo to a local directory
 3. Ensure that you are in the same directory as the docker-compose files
 4. Ensure that ports 3000 and 5000 are available
-5. After you ensure that the above are complete, build and deploy app with the one of the cmds:
+5. After you ensure that the above are complete, build and deploy app with the one of these cmds:
    - production: `docker-compose -f docker-compose-prod.yml up --build -d`
    - development: `docker-compose up --build -d`
+
+#### Tests
+
+You may run tests with this cmd: `docker-compose exec api pytest`
 
 #### Syntax Overview
 
